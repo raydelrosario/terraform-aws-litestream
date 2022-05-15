@@ -1,6 +1,5 @@
 resource "aws_s3_bucket" "main" {
-  bucket = var.litestream_bucket_name
-
+  bucket = var.bucket_name
 }
 
 resource "aws_s3_bucket_acl" "main" {
@@ -9,9 +8,9 @@ resource "aws_s3_bucket_acl" "main" {
 }
 
 resource "aws_iam_policy" "main" {
-  name        = "litestream-access"
+  name        = var.iam_policy_name
   path        = "/"
-  description = "Access Policy for ${var.litestream_bucket_name}"
+  description = var.iam_policy_description
 
   policy = jsonencode({
     "Version" : "2012-10-17",
@@ -38,7 +37,7 @@ resource "aws_iam_policy" "main" {
 }
 
 resource "aws_iam_user" "main" {
-  name = var.litestream_iam_user_name
+  name = var.iam_user_name
 }
 
 resource "aws_iam_access_key" "main" {
