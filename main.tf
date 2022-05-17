@@ -9,7 +9,7 @@ resource "aws_s3_bucket_acl" "main" {
 
 resource "aws_iam_policy" "main" {
   name        = var.iam_policy_name
-  path        = "/"
+  path        = var.iam_policy_path
   description = var.iam_policy_description
 
   policy = jsonencode({

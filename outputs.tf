@@ -11,6 +11,6 @@ output "iam_user_access_key_id" {
 
 output "iam_user_secret_access_key" {
   description = "Secret Access Key for access to the S3 bucket"
-  value     = aws_iam_access_key.main.secret
-  sensitive = true
+  value       = aws_iam_access_key.main.secret
+  sensitive   = true
 }
